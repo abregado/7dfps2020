@@ -24,27 +24,33 @@ public class RTSCommand : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        
+        if (agent.remainingDistance > agent.stoppingDistance) {
+            _character.Move(agent.desiredVelocity, false,false);
+        }
+        else {
+            agent.ResetPath();
+            _character.Move(Vector3.zero, false,false);
+        }
+        
         if (Input.GetMouseButtonDown(mouseButtonIndex)) {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit)) {
                 if (_instantTravel) {
-                    transform.SetPositionAndRotation(hit.point,Quaternion.identity);   
+                    transform.SetPositionAndRotation(hit.point, Quaternion.identity);
                 }
                 else {
+                    Debug.Log("destination set");
                     agent.SetDestination(hit.point);
                 }
             }
-
-            if (agent.remainingDistance > agent.stoppingDistance) {
-                _character.Move(agent.desiredVelocity,false,false);    
-            }
-            else {
-                _character.Move(Vector3.zero, false,false);
-            }
-            
             navMesh.BuildNavMesh();
         }
+
+        
+        
+            
     }
 }
