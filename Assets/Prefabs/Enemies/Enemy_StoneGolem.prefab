@@ -2622,9 +2622,9 @@ GameObject:
   - component: {fileID: 5424161205409713570}
   - component: {fileID: 5424161205402698226}
   - component: {fileID: 5424161205396390576}
-  - component: {fileID: 5424161205406534124}
   - component: {fileID: 5424161205406534131}
   - component: {fileID: 1211998287}
+  - component: {fileID: 1211998295}
   m_Layer: 15
   m_Name: Enemy_StoneGolem
   m_TagString: Untagged
@@ -2717,22 +2717,6 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
   m_GroundCheckDistance: 0.7
---- !u!114 &5424161205406534124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5424161205406534130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f52c105bfb33ec047996790720c49bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  navMesh: {fileID: 0}
-  mouseButtonIndex: 0
-  agent: {fileID: 0}
 --- !u!195 &5424161205406534131
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2762,12 +2746,49 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5424161205406534130}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Size: {x: 1, y: 2, z: 1}
+  m_Size: {x: 2, y: 2, z: 2}
   m_Center: {x: 0, y: 0.9, z: 0}
   m_Area: 1
   m_AffectedAgents: 00000000a98c17ec
+--- !u!114 &1211998295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424161205406534130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00fe472f819a9fa4998ea0a7d5c40b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 0}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 4608
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _patrolSpeed: 0.08
+  _chaseSpeed: 0.25
+  _attackSpeed: 0.01
+  walkPoint: {x: 0, y: 0, z: 0}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _waitTimeMin: 30
+  _waitTimeMax: 60
+  forgettingTime: 120
+  timeBetweenAttacks: 15
+  sightRange: 35
+  attackRange: 4
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  playerSeen: 0

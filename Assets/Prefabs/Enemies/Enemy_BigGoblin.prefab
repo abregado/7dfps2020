@@ -2622,8 +2622,8 @@ GameObject:
   - component: {fileID: 6508729038348862702}
   - component: {fileID: 6508729038348862703}
   - component: {fileID: 6508729038348862700}
-  - component: {fileID: 6508729038348862701}
   - component: {fileID: 6508729038348862674}
+  - component: {fileID: 6508729037833367183}
   m_Layer: 15
   m_Name: Enemy_BigGoblin
   m_TagString: Untagged
@@ -2692,7 +2692,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.25
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.8, z: 0}
@@ -2715,23 +2715,7 @@ MonoBehaviour:
   m_RunCycleLegOffset: 0.2
   m_MoveSpeedMultiplier: 1
   m_AnimSpeedMultiplier: 1
-  m_GroundCheckDistance: 0.7
---- !u!114 &6508729038348862701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6508729038348862675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f52c105bfb33ec047996790720c49bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  navMesh: {fileID: 0}
-  mouseButtonIndex: 1
-  agent: {fileID: 0}
+  m_GroundCheckDistance: 1
 --- !u!195 &6508729038348862674
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2754,3 +2738,40 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!114 &6508729037833367183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6508729038348862675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00fe472f819a9fa4998ea0a7d5c40b40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 1682963470855675102}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 4608
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _patrolSpeed: 0.4
+  _chaseSpeed: 1.2
+  _attackSpeed: 0.01
+  walkPoint: {x: 0, y: 0, z: 0}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _waitTimeMin: 10
+  _waitTimeMax: 15
+  forgettingTime: 5
+  timeBetweenAttacks: 5
+  sightRange: 15
+  attackRange: 2
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  playerSeen: 0

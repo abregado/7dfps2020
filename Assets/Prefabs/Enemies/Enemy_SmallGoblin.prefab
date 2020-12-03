@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 2940929079383194943}
   - component: {fileID: 2940929079383194942}
   - component: {fileID: 2940929079383194929}
-  - component: {fileID: 2940929079383194928}
   - component: {fileID: 2940929079383194931}
+  - component: {fileID: 747583636}
   m_Layer: 15
   m_Name: Enemy_SmallGoblin
   m_TagString: Untagged
@@ -83,7 +83,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.3
+  m_Radius: 0.25
   m_Height: 1.6
   m_Direction: 1
   m_Center: {x: 0, y: 0.8, z: 0}
@@ -107,22 +107,6 @@ MonoBehaviour:
   m_MoveSpeedMultiplier: 1.2
   m_AnimSpeedMultiplier: 1.2
   m_GroundCheckDistance: 0.7
---- !u!114 &2940929079383194928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2940929079383194930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f52c105bfb33ec047996790720c49bc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  navMesh: {fileID: 0}
-  mouseButtonIndex: 1
-  agent: {fileID: 0}
 --- !u!195 &2940929079383194931
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -145,6 +129,45 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!114 &747583636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2940929079383194930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad162987d52c014c99778b4fa9c996d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  head: {fileID: 5257566485015674262}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 12800
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 256
+  _patrolSpeed: 0.6
+  _chaseSpeed: 1.8
+  _attackSpeed: 0.01
+  walkPoint: {x: 0, y: 0, z: 0}
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  _waitTimeMin: 3
+  _waitTimeMax: 10
+  forgettingTime: 5
+  timeBetweenAttacks: 5
+  sightRange: 25
+  attackRange: 20
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  playerSeen: 0
+  projectile: {fileID: 3501722398215582864, guid: c6e6a09b4f62605408bb1721461fb3d3,
+    type: 3}
+  launcher: {fileID: 5257073724897534258}
 --- !u!1 &5256692999000658762
 GameObject:
   m_ObjectHideFlags: 0
