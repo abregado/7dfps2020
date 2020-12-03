@@ -2624,6 +2624,7 @@ GameObject:
   - component: {fileID: 5424161205396390576}
   - component: {fileID: 5424161205406534124}
   - component: {fileID: 5424161205406534131}
+  - component: {fileID: 1211998287}
   m_Layer: 15
   m_Name: Enemy_StoneGolem
   m_TagString: Untagged
@@ -2741,12 +2742,12 @@ NavMeshAgent:
   m_GameObject: {fileID: 5424161205406534130}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 0.3
+  m_Radius: 0.6
   m_Speed: 0.25
   m_Acceleration: 2
   avoidancePriority: 50
   m_AngularSpeed: 15
-  m_StoppingDistance: 0
+  m_StoppingDistance: 0.6
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -2754,3 +2755,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1211998287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5424161205406534130}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35e95dc5ff2b64380880dd7ac5922847, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Size: {x: 1, y: 2, z: 1}
+  m_Center: {x: 0, y: 0.9, z: 0}
+  m_Area: 1
+  m_AffectedAgents: 00000000a98c17ec
