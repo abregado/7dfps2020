@@ -6,8 +6,7 @@ using UnityEngine;
 public class ProjectileMovement : MonoBehaviour {
     public float speed = 50f;
     public float fireRate = 1f;
-    
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +23,7 @@ public class ProjectileMovement : MonoBehaviour {
 
     private void OnCollisionEnter(Collision other) {
         speed = 0;
-        
+        Debug.Log("hit!");
         Destroy(gameObject);
     }
 
