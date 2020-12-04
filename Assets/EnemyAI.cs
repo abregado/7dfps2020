@@ -12,7 +12,7 @@ public class EnemyAI : MonoBehaviour {
     protected Transform _player;
     private ThirdPersonCharacter _character;
     public LayerMask whatIsGround, whatIsPlayer;
-
+    public NavMeshSurface navMeshSurface;
 
     public float _patrolSpeed = 0.3f;
     public float _chaseSpeed = 1f;
@@ -109,7 +109,7 @@ public class EnemyAI : MonoBehaviour {
 
     private void SearchWalkPoint() {
         int randomWaypoint = Random.Range(0, waypoints.Length);
-
+        navMeshSurface.BuildNavMesh();
         walkPoint = waypoints[randomWaypoint].position;
         _walkPointSet = true;
     }
