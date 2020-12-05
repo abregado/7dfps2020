@@ -5,24 +5,24 @@ using UnityEngine;
 [RequireComponent(typeof (CharacterController))]
 public class FirstPersonController : MonoBehaviour
 {
-    private float moveSpeed = 15;
-    private float jumpSpeed = 15;
-    private float gravityStrength = 4;
+    protected float moveSpeed = 15;
+    protected float jumpSpeed = 15;
+    protected float gravityStrength = 4;
 
-    private const float STICK_TO_GROUND_FORCE = 10;
+    protected const float STICK_TO_GROUND_FORCE = 10;
 
-    private Vector2 mouseSensitivity = new Vector2(2, 2);
-    private Vector2 currentEulerAngle = new Vector2(0, 90);
+    protected Vector2 mouseSensitivity = new Vector2(2, 2);
+    protected Vector2 currentEulerAngle = new Vector2(0, 90);
 
-    private bool jumpRequested = false;
-    private Vector3 movementVector = Vector3.zero;
+    protected bool jumpRequested = false;
+    protected Vector3 movementVector = Vector3.zero;
 
 
-    private CharacterController characterController;
-    private Camera characterCamera;
-    private CollisionFlags lastCollisionFlags;
+    protected CharacterController characterController;
+    protected Camera characterCamera;
+    protected CollisionFlags lastCollisionFlags;
 
-    private void Start()
+    virtual protected void Start()
     {
         characterController = GetComponent<CharacterController>();
         characterCamera = GetComponentInChildren<Camera>();
@@ -31,7 +31,7 @@ public class FirstPersonController : MonoBehaviour
         Cursor.visible = false;
     }
 
-    private void Update()
+    virtual protected void Update()
     {
         Vector2 movement = new Vector2(Input.GetAxisRaw("Mouse X"), -Input.GetAxisRaw("Mouse Y"));
         movement *= mouseSensitivity;
@@ -57,7 +57,7 @@ public class FirstPersonController : MonoBehaviour
             jumpRequested = Input.GetKeyDown(KeyCode.Space);
     }
 
-    private void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         Vector2 movement = new Vector2();
         {
@@ -98,7 +98,7 @@ public class FirstPersonController : MonoBehaviour
     }
 
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    protected void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Rigidbody body = hit.collider.attachedRigidbody;
 
