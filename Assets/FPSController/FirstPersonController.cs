@@ -8,6 +8,7 @@ public class FirstPersonController : MonoBehaviour
     protected float moveSpeed = 15;
     protected float jumpSpeed = 15;
     protected float gravityStrength = 4;
+    bool active = true;
 
     protected const float STICK_TO_GROUND_FORCE = 10;
 
@@ -33,6 +34,12 @@ public class FirstPersonController : MonoBehaviour
 
     virtual protected void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P))
+            active = !active;
+
+        if (!active)
+            return;
+
         Vector2 movement = new Vector2(Input.GetAxisRaw("Mouse X"), -Input.GetAxisRaw("Mouse Y"));
         movement *= mouseSensitivity;
 

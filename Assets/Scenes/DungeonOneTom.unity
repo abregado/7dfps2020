@@ -13370,7 +13370,7 @@ PrefabInstance:
     - target: {fileID: 538677991143031628, guid: df1a32f28a3cf0a4e9f61834514f0891,
         type: 3}
       propertyPath: m_Name
-      value: FirstPersonController
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: df1a32f28a3cf0a4e9f61834514f0891, type: 3}

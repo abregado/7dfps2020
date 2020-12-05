@@ -6,14 +6,16 @@ public class WarriorCharacterController : FirstPersonController
 {
     Camera overlayCamera;
     GameObject weapon;
+    BoxCollider meleeHitbox;
 
     int attackFrame = 0;
     bool attacking = false;
 
     protected override void Start()
     {
-        overlayCamera = (Camera)transform.transform.Find("FirstPersonCharacter").Find("OverlayCamera").gameObject.GetComponent<Camera>();
+        overlayCamera = transform.Find("FirstPersonCharacter").Find("OverlayCamera").gameObject.GetComponent<Camera>();
         weapon = overlayCamera.transform.GetChild(0).GetChild(0).gameObject;
+        meleeHitbox = transform.Find("FirstPersonCharacter").Find("MeleeHitbox").gameObject.GetComponent<BoxCollider>();
         base.Start();
     }
 
@@ -50,7 +52,17 @@ public class WarriorCharacterController : FirstPersonController
 
             if (attackFrame == attackLength)
             {
-                Debug.Log("attack");
+                bool success = false;
+                foreach(Collider hit in meleeHitbox.GetComponent<QueryableTrigger>().getOverlaps())
+                {
+                    if (hit.GetComponent<EnemyAI>())
+                    {
+                        Object.Destroy(hit.gameObject);
+                        success = true;
+                    }
+                }
+
+                Debug.Log("HIT: " + success);
             }
             else if (attackFrame == attackLength * 2)
             {
