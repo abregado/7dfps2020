@@ -15471,11 +15471,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6508729037833367183, guid: fef3dc1c75060484e8c3d21c7ad08a0e,
         type: 3}
-      propertyPath: waypoints.Array.size
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6508729037833367183, guid: fef3dc1c75060484e8c3d21c7ad08a0e,
-        type: 3}
       propertyPath: navMeshSurface
       value: 
       objectReference: {fileID: 1332277317}
@@ -15584,11 +15579,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6508729038348862697, guid: fef3dc1c75060484e8c3d21c7ad08a0e,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 52a39be5f8f4f78469409d5d7788a71c, type: 2}
     - target: {fileID: 6508729038348862703, guid: fef3dc1c75060484e8c3d21c7ad08a0e,
         type: 3}
       propertyPath: m_Material
