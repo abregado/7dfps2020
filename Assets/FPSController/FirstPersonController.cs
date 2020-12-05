@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof (CharacterController))]
 public class FirstPersonController : MonoBehaviour
 {
-    private float moveSpeed = 5;
-    private float jumpSpeed = 5;
-    private float gravityStrength = 2;
+    private float moveSpeed = 15;
+    private float jumpSpeed = 15;
+    private float gravityStrength = 4;
 
     private const float STICK_TO_GROUND_FORCE = 10;
 
