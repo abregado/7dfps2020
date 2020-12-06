@@ -110,7 +110,7 @@ public class FirstPersonController : MonoBehaviour
     }
 
 
-    protected void OnControllerColliderHit(ControllerColliderHit hit)
+    virtual protected void OnControllerColliderHit(ControllerColliderHit hit)
     {
         Rigidbody body = hit.collider.attachedRigidbody;
 

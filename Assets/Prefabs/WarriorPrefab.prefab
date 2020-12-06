@@ -119,7 +119,7 @@ GameObject:
   - component: {fileID: 538677991148713612}
   - component: {fileID: 8079582310878863457}
   m_Layer: 8
-  m_Name: FirstPersonPlayerChar
+  m_Name: WarriorPrefab
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,6 +170,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1751c4a72a17e6e45a6c031731725887, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouselookActive: 1
+  movementActive: 1
 --- !u!1 &538677991143031630
 GameObject:
   m_ObjectHideFlags: 0

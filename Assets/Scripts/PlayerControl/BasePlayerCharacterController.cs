@@ -11,6 +11,8 @@ public abstract class BasePlayerCharacterController : FirstPersonController
     protected int attackFrame = 0;
     protected bool attacking = false;
 
+    protected bool canAttack = true;
+
     protected override void Start()
     {
         overlayCamera = transform.Find("FirstPersonCharacter").Find("OverlayCamera").gameObject.GetComponent<Camera>();
@@ -21,7 +23,7 @@ public abstract class BasePlayerCharacterController : FirstPersonController
 
     protected override void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (canAttack && Input.GetMouseButtonDown(0))
         {
             attacking = true;
             attackFrame = 0;
