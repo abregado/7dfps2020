@@ -16,7 +16,7 @@ public abstract class BasePlayerCharacterController : FirstPersonController
     protected override void Start()
     {
         overlayCamera = transform.Find("FirstPersonCharacter").Find("OverlayCamera").gameObject.GetComponent<Camera>();
-        weapon = overlayCamera.transform.GetChild(0).GetChild(0).gameObject;
+        weapon = overlayCamera.transform.Find("WeaponParent").GetChild(0).gameObject;
         meleeHitbox = transform.Find("FirstPersonCharacter").Find("MeleeHitbox").gameObject.GetComponent<BoxCollider>();
         base.Start();
     }
