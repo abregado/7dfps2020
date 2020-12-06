@@ -6,18 +6,17 @@ public abstract class BasePlayerCharacterController : FirstPersonController
 {
     protected Camera overlayCamera;
     protected GameObject weapon;
-    protected BoxCollider meleeHitbox;
 
     protected int attackFrame = 0;
     protected bool attacking = false;
 
     protected bool canAttack = true;
+    protected bool pauseAttackAtHitFrame = false;
 
     protected override void Start()
     {
         overlayCamera = transform.Find("FirstPersonCharacter").Find("OverlayCamera").gameObject.GetComponent<Camera>();
         weapon = overlayCamera.transform.Find("WeaponParent").GetChild(0).gameObject;
-        meleeHitbox = transform.Find("FirstPersonCharacter").Find("MeleeHitbox").gameObject.GetComponent<BoxCollider>();
         base.Start();
     }
 
@@ -53,9 +52,16 @@ public abstract class BasePlayerCharacterController : FirstPersonController
             weapon.transform.localPosition = position;
 
             if (attackFrame == attackLength)
+            {
+                if (pauseAttackAtHitFrame && Input.GetMouseButton(0))
+                    attackFrame--;
+
                 DoAttack();
+            }
             else if (attackFrame == attackLength * 2)
+            {
                 attacking = false;
+            }
         }
 
         base.FixedUpdate();

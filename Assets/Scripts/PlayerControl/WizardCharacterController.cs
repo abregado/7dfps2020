@@ -8,6 +8,8 @@ public class WizardCharacterController : BasePlayerCharacterController
 {
     public GameObject projectilePrefab;
     public Image manaBarImage;
+    public GameObject staffTip;
+    public LayerMask laserLayerMask;
 
     private int gravityPausedTicks = 0;
     private float blinkDistance = 10;
@@ -22,6 +24,7 @@ public class WizardCharacterController : BasePlayerCharacterController
 
     protected override void Start()
     {
+        pauseAttackAtHitFrame = true;
         base.Start();
     }
 
@@ -71,7 +74,21 @@ public class WizardCharacterController : BasePlayerCharacterController
 
     protected override void DoAttack()
     {
-        GameObject.Instantiate(projectilePrefab, characterCamera.transform.position, characterCamera.transform.rotation);
-        Debug.Log("Pew pew!");
+        Ray ray = new Ray(characterCamera.transform.position, characterCamera.transform.rotation * new Vector3(0, 0, 1));
+        Vector3 target = ray.origin + ray.direction * 100;
+
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, laserLayerMask.value))
+        {
+            target = hit.point;
+            Debug.Log(LayerMask.LayerToName(hit.collider.gameObject.layer));
+        }
+
+        Vector3 origin = staffTip.transform.position;
+
+        float distance = (target - origin).magnitude;
+
+        Ray drawRay = new Ray(origin, target - origin);
+        Debug.DrawRay(drawRay.origin, drawRay.direction * distance, Color.red, 10);
     }
 }

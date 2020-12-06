@@ -14,9 +14,12 @@ public class WarriorCharacterController : BasePlayerCharacterController
 
     private ChargeState chargeState = ChargeState.NotCharging;
     private float chargeSpeed = 50;
+    protected BoxCollider meleeHitbox;
+
 
     protected override void Start()
     {
+        meleeHitbox = transform.Find("FirstPersonCharacter").Find("MeleeHitbox").gameObject.GetComponent<BoxCollider>();
         base.Start();
     }
 
