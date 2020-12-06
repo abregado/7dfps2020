@@ -36,13 +36,19 @@ public class EnemyAI : MonoBehaviour {
     
     
     void Awake() {
-        _player = GameObject.FindWithTag("Player").transform;
         _agent = GetComponent<NavMeshAgent>();
         _character = GetComponent<ThirdPersonCharacter>();
         _lastTimeSeen = -10000f;
     }
     
     void Update() {
+        if (!_player)
+        {
+            _player = GameObject.FindWithTag("Player").transform;
+            if (!_player)
+                return;
+        }
+
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         CheckPlayerSeen();
 
@@ -125,7 +131,7 @@ public class EnemyAI : MonoBehaviour {
     
     
     private void ChasePlayer() {
-        Debug.Log("Chasing");
+        //Debug.Log("Chasing");
         _agent.SetDestination(_player.position);
     }
 
