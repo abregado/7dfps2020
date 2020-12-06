@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WarriorCharacterController : FirstPersonController
+public abstract class BasePlayerCharacterController : FirstPersonController
 {
-    Camera overlayCamera;
-    GameObject weapon;
-    BoxCollider meleeHitbox;
+    protected Camera overlayCamera;
+    protected GameObject weapon;
+    protected BoxCollider meleeHitbox;
 
-    int attackFrame = 0;
-    bool attacking = false;
+    protected int attackFrame = 0;
+    protected bool attacking = false;
 
     protected override void Start()
     {
@@ -51,25 +51,18 @@ public class WarriorCharacterController : FirstPersonController
             weapon.transform.localPosition = position;
 
             if (attackFrame == attackLength)
-            {
-                bool success = false;
-                foreach(Collider hit in meleeHitbox.GetComponent<QueryableTrigger>().getOverlaps())
-                {
-                    if (hit.GetComponent<EnemyAI>())
-                    {
-                        Object.Destroy(hit.gameObject);
-                        success = true;
-                    }
-                }
-
-                Debug.Log("HIT: " + success);
-            }
+                DoAttack();
             else if (attackFrame == attackLength * 2)
-            {
                 attacking = false;
-            }
         }
 
         base.FixedUpdate();
+    }
+
+    protected abstract void DoAttack();
+
+    public void DealDamage(int damage)
+    {
+        Debug.Log("Oww! Received " + damage + " damage");
     }
 }

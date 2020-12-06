@@ -22,6 +22,11 @@ public class ProjectileMovement : MonoBehaviour {
     }
 
     private void OnCollisionEnter(Collision other) {
+        if (other.gameObject.GetComponent<BasePlayerCharacterController>())
+            other.gameObject.GetComponent<BasePlayerCharacterController>().DealDamage(1);
+        else if (other.gameObject.GetComponent<EnemyAI>())
+            other.gameObject.GetComponent<EnemyAI>().DealDamage(1);
+
         speed = 0;
         Debug.Log("hit!");
         Destroy(gameObject);

@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 538677991142678380}
   - component: {fileID: 538677991148713612}
-  - component: {fileID: 8079582310878863457}
+  - component: {fileID: 835022598565816344}
   m_Layer: 8
   m_Name: WizardPrefab
   m_TagString: Player
@@ -158,7 +158,7 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8079582310878863457
+--- !u!114 &835022598565816344
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -167,9 +167,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 538677991143031628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1751c4a72a17e6e45a6c031731725887, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c3a83a598c4adf4d807f116b7dcd89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 6530563903019710334, guid: d8f6de1109fe2e44b9f4060c9eefd66a,
+    type: 3}
 --- !u!1 &538677991143031630
 GameObject:
   m_ObjectHideFlags: 0

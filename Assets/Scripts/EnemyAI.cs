@@ -87,7 +87,7 @@ public class EnemyAI : MonoBehaviour {
     
             
             if (Physics.Raycast(ray, out hit, sightRange) && LayerMask.LayerToName(hit.collider.gameObject.layer) == "Player") {
-                Debug.Log("Player spotted");
+                //Debug.Log("Player spotted");
                 playerSeen = true;
                 _lastTimeSeen = Time.time;
             }
@@ -147,6 +147,11 @@ public class EnemyAI : MonoBehaviour {
 
     private void ResetAttack() {
         _alreadyAttacked = false;
+    }
+
+    public void DealDamage(int damage)
+    {
+        Destroy(gameObject); // ignore damage amount for now
     }
     
 }
