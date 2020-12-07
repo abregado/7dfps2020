@@ -13,6 +13,9 @@ public abstract class BasePlayerCharacterController : FirstPersonController
 
     protected bool canAttack = true;
 
+    protected int maxHearts;
+    protected int hearts;
+
     protected override void Start()
     {
         overlayCamera = transform.Find("FirstPersonCharacter").Find("OverlayCamera").gameObject.GetComponent<Camera>();

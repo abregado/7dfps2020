@@ -48,7 +48,7 @@ Animator:
   m_GameObject: {fileID: 2940929079383194930}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: b6ef2f4d0154b2747860a3332fa05f97, type: 3}
-  m_Controller: {fileID: 9100000, guid: 60f42dfb6fdb8d74a85e8eae0da0cf24, type: 2}
+  m_Controller: {fileID: 9100000, guid: 52a39be5f8f4f78469409d5d7788a71c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -84,9 +84,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.25
-  m_Height: 1.6
+  m_Height: 1.89962
   m_Direction: 1
-  m_Center: {x: 0, y: 0.8, z: 0}
+  m_Center: {x: 0, y: 0.94981, z: 0}
 --- !u!114 &2940929079383194929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -154,6 +154,9 @@ MonoBehaviour:
   _attackSpeed: 0.01
   walkPoint: {x: 0, y: 0, z: 0}
   waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

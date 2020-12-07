@@ -17,6 +17,9 @@ public class WarriorCharacterController : BasePlayerCharacterController
 
     protected override void Start()
     {
+        maxHearts = 6;
+        hearts = maxHearts;
+
         base.Start();
     }
 

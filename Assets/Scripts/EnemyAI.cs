@@ -69,13 +69,13 @@ public class EnemyAI : MonoBehaviour {
         
         _character.Move(_agent.desiredVelocity, false, false);
         
-        if (playerInAttackRange) {
-            AttackPlayer();
-        } else if (playerSeen && !playerInAttackRange) {
-            ChasePlayer();
-        } else if (!playerInSightRange && !playerInAttackRange) {
-            Patrolling();
-        }
+        //if (playerInAttackRange) {
+        //    AttackPlayer();
+        //} else if (playerSeen && !playerInAttackRange) {
+        //    ChasePlayer();
+        //} else if (!playerInSightRange && !playerInAttackRange) {
+        //    Patrolling();
+        //}
     }
 
     private void CheckPlayerSeen() {

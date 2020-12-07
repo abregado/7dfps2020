@@ -6,19 +6,23 @@ using UnityEngine;
 public class ProjectileMovement : MonoBehaviour {
     public float speed = 50f;
     public float fireRate = 1f;
+    public float lifetime = 15f;
+
+    float created;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        created = Time.time;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (speed != 0) {
-            transform.position += transform.forward * (speed * Time.deltaTime);
-        }    
+        if (Time.time - created > lifetime)
+            Destroy(gameObject);
+
+        transform.position += transform.forward * (speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision other) {
