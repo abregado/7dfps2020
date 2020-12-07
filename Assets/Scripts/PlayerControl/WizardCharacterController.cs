@@ -25,7 +25,7 @@ public class WizardCharacterController : BasePlayerCharacterController
 
     bool spendMana(float amount)
     {
-        if (currentMana > amount)
+        if (currentMana >= amount)
         {
             currentMana -= amount;
             manaRegenPausedTicks = pauseRegenForTicks;

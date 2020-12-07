@@ -2,9 +2,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WarriorCharacterController : BasePlayerCharacterController
 {
+    public Image rageBarImage;
+
+    private static float maxRage = 100;
+    private static float chargeCost = 25;
+    private static float rageRegenPerTick = (1 / 50f) / 10f * chargeCost;
+    private static float hitRageRecharge = chargeCost / 2;
+    private float currentRage = chargeCost;
+
+    bool spendRage(float amount)
+    {
+        if (currentRage >= amount)
+        {
+            currentRage -= amount;
+            return true;
+        }
+
+        return false;
+    }
+
     enum ChargeState
     {
         Charging,
@@ -25,7 +45,7 @@ public class WarriorCharacterController : BasePlayerCharacterController
 
     protected override void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && spendRage(chargeCost))
         {
             chargeState = ChargeState.Charging;
             movementActive = false;
@@ -34,6 +54,13 @@ public class WarriorCharacterController : BasePlayerCharacterController
             attacking = false;
             attackFrame = 0;
         }
+
+        if (currentRage < chargeCost)
+            rageBarImage.color = new Color(1, 1, 1, 0.5f);
+        else
+            rageBarImage.color = Color.white;
+
+        rageBarImage.fillAmount = currentRage / maxRage;
 
         base.Update();
     }
@@ -92,6 +119,10 @@ public class WarriorCharacterController : BasePlayerCharacterController
                 canAttack = true;
             }
         }
+        else if (chargeState == ChargeState.NotCharging && currentRage < chargeCost)
+        {
+            currentRage += rageRegenPerTick;
+        }
 
         base.FixedUpdate();
     }
@@ -108,7 +139,10 @@ public class WarriorCharacterController : BasePlayerCharacterController
                 foreach (Collider otherHit in allHits)
                 {
                     if (otherHit.GetComponent<EnemyAI>())
+                    {
                         otherHit.GetComponent<EnemyAI>().DealDamage(3);
+                        currentRage = Math.Min(currentRage + hitRageRecharge, maxRage);
+                    }
                 }
 
                 chargeState = ChargeState.SwingAtEnd;
@@ -126,6 +160,7 @@ public class WarriorCharacterController : BasePlayerCharacterController
             if (hit.GetComponent<EnemyAI>())
             {
                 hit.GetComponent<EnemyAI>().DealDamage(1);
+                currentRage = Math.Min(currentRage + hitRageRecharge, maxRage);
                 success = true;
             }
         }
